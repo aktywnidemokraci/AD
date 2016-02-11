@@ -1,0 +1,117 @@
+<template name="listKwestia">
+    <div class="main">
+        <div class="row">
+                <div class="col-md-4">
+                    {{#if currentUser}}
+                        {{#if isZwyczajnyLogged}}
+                            <div class="btn-group">
+                                <a id="addKwestiaButton" class="btn btn-primary">
+                                    <i class="fa fa-plus"></i>
+                                    Dodaj
+                                </a>
+                            </div>
+                        {{/if}}
+                    {{/if}}
+                </div>
+                <div class="pull-right col-md-4">
+                    {{> reactiveTableFilter
+                    id="customFilter"
+                    label="Filter"
+                    fields=getFilterFields}}
+                </div>
+                <div class="pull-right col-md-4">
+                    <select class="form-control" id="customFilterSelect">
+                        <option value="0">Najsilniejsze</option>
+                        <option value="1">Najnowsze</option>
+                    </select>
+                </div>
+            </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                {{#if isDataSortEnabled}}
+                    {{> reactiveTable
+                    class = "table table-bordered table-hover"
+                    fields = settings2.fields
+                    settings = settings2
+                    collection = "KwestiaList"
+                }}
+                {{else}}
+                    {{> reactiveTable
+                    class = "table table-bordered table-hover"
+                    fields = settings.fields
+                    settings = settings
+                    collection = "KwestiaList"
+                    }}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    {{> GlobalNotifications}}
+</template>
+
+<template name="tematKwestia">
+    {{topicName}}
+</template>
+
+<template name="rodzajKwestia">
+    {{typeName}}
+</template>
+
+<template name="dataGlKwestia">
+    {{date}}
+</template>
+
+<template name="kworumNumber">
+    <b>{{getUsersCount}}</b><small>{{getKworum}}</small>
+</template>
+
+<template name="dataUtwKwestia">
+    {{date}}
+</template>
+<template name="id">
+    {{id}}
+</template>
+<template name="nazwaKwestiLink">
+    <a href="{{ pathFor 'informacjeKwestia'}}" id="kwestiaIdClick" class="kwestiaId">{{issueName}}</a>
+</template>
+
+<template name="nazwaKwestii">
+    {{this.kwestiaNazwa}}
+</template>
+
+<template name="priorytetKwestia">
+    <b>{{priorytet}}</b>
+    {{#if nadanyPriorytet}}
+        <small>{{myGlos}}</small>
+    {{else}}
+        <small style="color:#C9302C"><b>{{myGlos}}</b></small>
+    {{/if}}
+</template>
+
+<template name="editColumnKwestia">
+    <a title="Edytuj" id="editKwestia" href="{{ pathFor 'editKwestia'}}"><i
+            class="glyphicon glyphicon-pencil clickable"></i></a>
+</template>
+
+<template name="listKwestiaColumnLabel">
+    <span data-toggle="tooltip" title="{{title}}">{{text}}</span>
+</template>
+
+<template name="sugerowanyTemat">
+    {{sugerowanyTemat}}
+</template>
+
+<template name="sugerowanyRodzaj">
+    {{sugerowanyRodzaj}}
+</template>
+
+<template name="statusKwestii">
+    {{status}}
+</template>
+
+<template name="noData">
+    <div class="">
+        Brak danych do wyświetlania...
+    </div>
+</template>

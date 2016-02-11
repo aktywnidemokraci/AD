@@ -1,0 +1,26 @@
+<template name="hibernowaneList">
+    <div class="main">
+        <div class="row">
+            <div class="col-md-12">
+                {{> reactiveTable
+                class = "table table-bordered table-hover"
+                fields = settings.fields
+                settings = settings
+                collection = "HibernowaneList"
+                }}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="nazwaKwestiiHibernowaneLink">
+    <a href="{{ pathFor 'informacjeKwestia'}}">{{this.kwestiaNazwa}}</a>
+</template>
+
+<template name="tematKwestiiHibernowane">
+    {{getTemat idTemat}}
+</template>
+
+<template name="rodzajKwestiiHibernowane">
+    {{getRodzaj idRodzaj}}
+</template>

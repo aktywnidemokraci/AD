@@ -1,0 +1,105 @@
+<template name="czlonekZwyczajnyForm">
+    <div class="main">
+        <legend>Aplikowanie na członka zwyczajnego w organizacji {{nazwaOrganizacji}}</legend>
+        {{#if currentUser}}
+            <p class="col-md-12 bg-danger padding-15">
+                Uzupełnij brakujące pola we wniosku.
+            </p>
+            <br/>
+        {{/if}}
+        <div class="row">
+            <div class="col col-md-10">
+                <form class="form-horizontal" id="userForm">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="inputEmail">Email: </label>
+
+                        <div class="col-xs-9">
+                            <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email"
+                                   value={{email}}
+                                           required {{isNotEmpty}}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="firstName">Imię: </label>
+
+                        <div class="col-xs-9">
+                            <input name="firstName" type="text" class="form-control" id="firstName" placeholder="Imię"
+                                   value={{profile.firstName}}
+                                           required {{isNotEmpty}}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="lastName">Nazwisko: </label>
+
+                        <div class="col-xs-9">
+                            <input name="lastName" type="text" class="form-control" id="lastName"
+                                   placeholder="Nazwisko" value={{profile.lastName}} required {{isNotEmpty}}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="phoneNumber">PESEL: </label>
+
+                        <div class="col-xs-9">
+                            <input name="pesel" type="text" class="form-control" id="pesel"
+                                   placeholder="PESEL" value={{profile.pesel}} required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="postalAddress">Adres: </label>
+
+                        <div class="col-xs-9">
+                            <textarea name="address" rows="3" class="form-control" id="postalAddress"
+                                      placeholder="Adres" value={{profile.address}} required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Kod pocztowy: </label>
+                        <div class="col-xs-9">
+                            <input class="form-control" type="text" name="ZipCode" id="ZipCode" placeholder="Kod pocztowy" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Miasto: </label>
+                        <div class="col-xs-9">
+                            <input name="city" type="text" class="form-control" id="city" placeholder="Miasto" value={{profile.city}} required {{isNotEmpty}}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="uwagiStatus">Dodatkowe: </label>
+
+                        <div class="col-xs-9">
+                            <textarea name="uwagi" rows="3" class="form-control" id="uwagiStatus"
+                                      placeholder="Napisz parę słów do nas, o sobie i powodach Twojego wniosku..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3">Język użytkownika: </label>
+
+                        <div class="col-xs-9">
+                            <select name="language" id="language" class="form-control" required>
+                                <option value="0">Wybierz język</option>
+                                {{#each getLanguages}}
+                                    <option value="{{shortName}}">{{languageName}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <div class="input-group">
+                                <input type="checkbox" name="statutConfirmation"  required/>
+                                <span id="statutConfirmationSpan">Potwierdzam znajomość <a id="statutBootbox">Statutu</a> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <input type="submit" class="btn btn-primary" value="Aplikuję o przyjęcie" id="submitZwyczajny">
+                            <input type="reset" class="btn btn-default" value="Anuluj">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

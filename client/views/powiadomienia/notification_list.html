@@ -1,0 +1,25 @@
+<template name="notificationList">
+<!--{{#if currentUser}}-->
+    <div class="main">
+        <legend>Lista powiadomień </legend>
+        <div class="row">
+            <div class="col-md-12">
+                {{> reactiveTable
+                class = "table table-bordered table-hover"
+                fields = settings.fields
+                settings = settings
+                collection = "PowiadomieniaList"
+                }}
+            </div>
+        </div>
+    </div>
+        <!--{{/if}}-->
+</template>
+
+<template name="tematLink">
+    <a href="{{ pathFor 'notificationInfo'}}">{{notificationTitle}}</a>
+</template>
+
+<template name="dataWpr">
+    {{date}}
+</template>

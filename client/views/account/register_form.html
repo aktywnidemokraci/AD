@@ -1,0 +1,115 @@
+<template name="registerForm">
+    <div class="main">
+        <legend>Utwórz konto</legend>
+        {{#if  lessThanFiveUsers}}
+            <div class="row">
+                <div class="col col-md-10">
+                    <form class="form-horizontal" id="userForm">
+                        <div class="form-group">
+                            <label class="control-label col-xs-3" for="inputEmail">Email: </label>
+
+                            <div class="col-xs-9">
+                                <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3" for="firstName">Imię: </label>
+
+                            <div class="col-xs-9">
+                                <input name="firstName" type="text" class="form-control" id="firstName" placeholder="Imię" required >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3" for="lastName">Nazwisko: </label>
+
+                            <div class="col-xs-9">
+                                <input name="lastName" type="text" class="form-control" id="lastName"
+                                       placeholder="Nazwisko"  required >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3" for="inputPassword">Hasło: </label>
+
+                            <div class="col-xs-9">
+                                <input name="password" type="password" class="form-control" id="inputPassword"
+                                       placeholder="Hasło" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3" for="confirmPassword">Potwierdź hasło: </label>
+
+                            <div class="col-xs-9">
+                                <input name="confirmPassword" type="password" class="form-control" id="confirmPassword"
+                                       placeholder="Potwierdź hasło">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3" for="phoneNumber">PESEL: </label>
+
+                            <div class="col-xs-9">
+                                <input name="pesel" type="text" class="form-control" id="pesel"
+                                       placeholder="PESEL"  required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3" for="postalAddress">Adres: </label>
+                            <div class="col-xs-9">
+                                <textarea name="address" rows="3" class="form-control" id="postalAddress"
+                                          placeholder="Adres"  required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3">Kod pocztowy: </label>
+                            <div class="col-xs-9">
+                                <input class="form-control" type="text" name="ZipCode" id="ZipCode" placeholder="Kod pocztowy" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3">Miasto: </label>
+                            <div class="col-xs-9">
+                                <input name="city" type="text" class="form-control" id="city" placeholder="Miasto"  required >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3" for="uwagiStatus">Dodatkowe: </label>
+
+                            <div class="col-xs-9">
+                                <textarea name="uwagi" rows="3" class="form-control" id="uwagiStatus"
+                                          placeholder="Uwagi..."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-3">Język użytkownika: </label>
+
+                            <div class="col-xs-9">
+                                <select name="language" id="language" class="form-control" required>
+                                    <option value="0">Wybierz język</option>
+                                    {{#each getLanguages}}
+                                        <option value="{{shortName}}">{{languageName}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-offset-3 col-xs-9">
+                                <div class="input-group">
+                                    <input type="checkbox" name="statutConfirmation"  {{isSelected 'kobieta'}} required/>
+                                    <span id="statutConfirmationSpan">Potwierdzam znajomość <a id="statutBootbox">Statutu</a> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-offset-3 col-xs-9">
+                                <input type="submit" class="btn btn-primary" value="Zapisz" id="submitRegistration">
+                                <input type="reset" class="btn btn-default" value="Anuluj">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {{else}}
+            Rejestracja nie możliwa z powodu osiągnięcia limitu osób, które mogą się zarejestrować samodzielnie.
+            Aby aplikować kliknij dołącz.
+        {{/if}}
+    </div>
+</template>

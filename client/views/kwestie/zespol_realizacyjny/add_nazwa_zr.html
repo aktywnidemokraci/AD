@@ -1,0 +1,44 @@
+<template name="addNazwaModal">
+    <div id="addNazwa" class="modal fade" data-keyboard="false" data-backdrop="static" tabindex="-1" data-width="760" style="display:none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {{> addNazwaModalInner}}
+            </div>
+        </div>
+    </div>
+    {{> GlobalNotifications}}
+</template>
+
+<template name="addNazwaModalInner">
+    <div class="modal-header">
+        <h4>Nadaj nazwę temu Zespołowi Realizacyjnemu</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <label>Zespół Realizacyjny ds.</label>
+                <input name="nazwaZR" id="nazwaZR" class="form-control"  placeholder="Nazwa Zespołu Realizacyjnego"/>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <p><u>Objaśnienie:</u></p>
+                <p>Ostatecznie w nazwie Zespołu będzie fraza - prefiks "Zespół Realizacyjny ds. ", a więc wprowadź
+                jedynie ciąg dalszy nazwy, np.: "Rozpisania Konkursu", albo "Projektu Ogrodzenia Osiedla", lub
+                "Jawności Finansów", itp. zakończenie zgodne z charakterem rozpatrywanej Kwestii.
+                </p>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-12">
+                <!--<button class="btn btn-default" id="zapiszButton">Powrót</button>-->
+                <button class="btn btn-success" id="zapiszButton">Zapisz</button>
+            </div>
+        </div>
+    </div>
+</template>

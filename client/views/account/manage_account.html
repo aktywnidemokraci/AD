@@ -1,0 +1,46 @@
+<template name="manageAccount">
+    <div class="main">
+        <legend>Twój profil</legend>
+
+        <div class="pull-right">
+            <a href="{{pathFor 'profile_edit'}}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-pencil"></span> Edytuj profil</a>
+        </div>
+
+        <div class="clearfix"></div>
+        <hr/>
+        <table class="table table-bordered manageTable">
+            <tr>
+                <td><span class="glyphicon glyphicon-user"></span><strong> Login</strong></td>
+                <td>{{username}}</td>
+            </tr>
+            <tr>
+                <td><span class="glyphicon glyphicon-envelope"></span><strong> Email</strong></td>
+                <td>{{test emails}}</td>
+            </tr>
+            <tr>
+                <td><span class="glyphicon glyphicon-info-sign"></span><strong> Imię i nazwisko</strong></td>
+                <td>{{profile.fullName}}</td>
+            </tr>
+            {{#if profile.pesel}}
+                <tr>
+                    <td><span class="fa fa-envelope"></span><strong> Pesel</strong></td>
+                    <td>{{profile.pesel}}</td>
+                </tr>
+            {{/if}}
+            <tr>
+                <td><span class="glyphicon glyphicon-book"></span><strong> Stanowisko w systemie</strong></td>
+                <td>{{profile.userType}}
+                </td>
+            </tr>
+            <tr>
+                <td><span class="glyphicon glyphicon-map-marker"></span><strong> Adres</strong></td>
+                <td>{{profile.address}}, {{profile.zip}} {{profile.city}}</td>
+            </tr>
+            <tr>
+                <td><span class="glyphicon glyphicon-star"></span><strong> Ranking</strong></td>
+                <td>{{profile.rADking}}</td>
+            </tr>
+        </table>
+    </div>
+</template>

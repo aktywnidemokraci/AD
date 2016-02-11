@@ -1,0 +1,24 @@
+<template name="realizacja">
+        <div class="main">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#realizacja" aria-controls="realizacja" role="tab" data-toggle="tab">Realizowane</a></li>
+                    <li role="presentation"><a href="#zrealizowane" aria-controls="zrealizowane" role="tab" data-toggle="tab">Zrealizowane</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="realizacja">
+                        <br />
+                        {{> realizacjaTab1}}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="zrealizowane">
+                        <br />
+                        {{> realizacjaTab2}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{>GlobalNotifications}}
+</template>
+
+

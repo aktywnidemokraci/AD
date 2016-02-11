@@ -1,0 +1,31 @@
+<template name="addHonorowy">
+    <div class="row">
+        <div class="col col-md-10">
+            <form class="form-horizontal" id="honorowyForm">
+                <legend>Zgłoszenie na członka honorowego</legend>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="email">Email:</label>
+                    <div class="col-xs-9">
+                        <input type="text"  name="email" id="email" required  class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-3" for="uzasadnienie">Uzasadnienie:</label>
+                    <div class="col-xs-9">
+                        <textarea   name="uzasadnienie" id="uzasadnienie" required  class="form-control" rows="3"
+                                    placeholder="Uzasadnij dlaczego chcesz powołać na stanowisko członka honorowego właśnie tę osobę"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-3 col-xs-9">
+                        <input type="submit" class="btn btn-primary" value="Zgłoś" id="submitHonorowy">
+                        <input type="reset" class="btn btn-default" value="Anuluj">
+                    </div>
+                </div>
+                <br/>
+            </form>
+        </div>
+    </div>
+</template>

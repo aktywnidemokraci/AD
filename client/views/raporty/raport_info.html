@@ -1,0 +1,45 @@
+<template name="informacjeRaport">
+    <div class="main">
+        <legend>{{kwestiaNazwa}}</legend>
+        <h4>Raport Realizacyjny</h4>
+        <br/>
+        <div class="row">
+            <div class="col col-md-10">
+                <form class="form-horizontal">
+                    <div class="form-group" id="kwestiaNazwaGroup">
+                        <label class=" col-xs-offset-1 col-xs-2">Data utworzenia:</label>
+
+                        <div class="col-xs-9">
+                            {{dataUtworzenia}}
+                        </div>
+                    </div>
+                    <div class="form-group" id="kwestiaNazwaGroup">
+                        <label class=" col-xs-offset-1 col-xs-2">Autor:</label>
+                        <div class="col-xs-9">
+                            {{autorFullName}}
+                        </div>
+                    </div>
+                    <div class="form-group" id="kwestiaNazwaGroup">
+                        <label class=" col-xs-offset-1 col-xs-2">Tytuł:</label>
+                        <div class="col-xs-9">
+                            {{tytul}}
+                        </div>
+                    </div>
+                    <div class="form-group" id="kwestiaNazwaGroup">
+                        <label class=" col-xs-offset-1 col-xs-2">Szczegóły:</label>
+
+                        <div class="col-xs-9">
+                            {{opis}}
+                        </div>
+                    </div>
+                    <div class="pull-left">
+                        {{#with issueReport}}
+                            <a href="{{pathFor "listRaport"}}" type="button"
+                               class="btn btn-primary">Zobacz wszystkie raporty dla tej Kwestii</a>
+                        {{/with}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,79 @@
+<template name="listTemat">
+    {{#if currentUser}}
+        <div class="main">
+            <legend>Kategoryzacja</legend>
+            <div class="row">
+                <div class="col col-md-12">
+                    <div class="input-group">
+                        <a href="{{pathFor 'addTemat'}}" class="btn btn-primary">
+                            <i class="fa fa-plus"></i> Dodaj temat
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="tematTable">
+                    {{> reactiveTable
+                    class = "table table-bordered table-hover"
+                    fields = settingsTemat.fields
+                    settings = settingsTemat
+                    collection = listTemat
+                    }}
+                </div>
+            </div>
+
+            <hr/>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-right">
+                        <span>Liczba rodzajów w temacie <strong>{{getTemat}}</strong>: </span><span
+                            class="badge">{{rodzajCount}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-12">
+                    <div class="input-group">
+                        <button id="reloadAll" class="btn btn-default">
+                            <i class="fa fa-refresh"></i> Wszystkie rodzaje
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="rodzajTable">
+                    {{> reactiveTable
+                    class = "table table-bordered table-hover"
+                    fields = settingsRodzaj.fields
+                    settings = settingsRodzaj
+                    collection = listRodzaj
+                    }}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</template>
+
+<template name="optionsColumnTemat">
+    <div class="pull-right">
+        <a class="btn btn-xs btn-default" data-toggle="tooltip" title="Edytuj" href="{{ pathFor 'editTemat' _id}}">
+            <i class="fa fa-edit clickable"></i> Edytuj
+        </a>
+        <a class="btn btn-xs btn-default" data-toggle="tooltip" title="Dodaj rodzaj"
+           href="{{ pathFor 'addRodzaj' _id}}">
+            <i class="fa fa-plus clickable"></i> Dodaj rodzaj
+        </a>
+        <a class="btn btn-xs btn-default" data-toggle="tooltip" title="Odśwież rodzaje" href="#" id="reload"
+           name="{{_id}}">
+            <i class="fa fa-filter clickable" name="{{_id}}"></i>
+        </a>
+    </div>
+</template>
+
+<template name="optionsColumnRodzaj">
+    <div class="pull-right">
+        <a class="btn btn-xs btn-default" data-toggle="tooltip" title="Edytuj" href="{{ pathFor 'editRodzaj' _id}}">
+            <i class="fa fa-edit clickable"></i> Edytuj
+        </a>
+    </div>
+</template>

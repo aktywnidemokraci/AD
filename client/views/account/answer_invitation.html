@@ -1,0 +1,62 @@
+<template name="answerInvitation">
+    {{#if userNotAnswered}}
+        {{#if timeExpired}}
+            <div class="col-md-12 bg-warning padding-15" style="text-align: center ">
+                <p>Przepraszamy,</p>
+                <p >Czas przyjęcia zaproszenia na stanowisko {{position}} w naszej organizacji {{organizationName}} minął.</p>
+            </div>
+        {{else}}
+            <div class="main">
+                <div class="col-md-12 bg-success padding-15" style="text-align: center ">
+                    <p>Witaj {{fullName}}!</p>
+                    <br>
+                    <p>Zostałeś zaproszony do aplikowania na stanowisko {{position}} w naszej organizacji {{organizationName}}.</p>
+                    <br>
+                    <p>Czy chcesz aplikować na powyższe stanowisko?</p>
+                </div>
+                <br>
+                &nbsp;
+                <div style="text-align: center ">
+                    <input type="submit" class="btn btn-primary" value="Chcę aplikować" id="apply">
+                    <input type="reset" class="btn btn-default" value="Nie, dziękuję" id="refuse">
+                </div>
+            </div>
+        {{/if}}
+    {{else}}
+        {{#if answerPositive}}
+            <div class="col-md-12 bg-success padding-15" style="text-align: center ">
+            <p>Już potwierdziłeś chęć aplikowania do naszej organizacji {{organizationName}}.</p>
+            {{#with actualKwestia}}
+                <p>Aby zobaczyć szczegóły kwestii kliknij <a href="{{pathFor 'informacjeKwestia'}}">tutaj</a> </p>
+            {{/with}}
+            </div>
+        {{/if}}
+        {{#if answerNegative}}
+            <div class="col-md-12 bg-info padding-15" style="text-align: center ">
+                <p>Przepraszamy!</p>
+                <p>Odrzuciłeś zaproszenie do aplikowania na stanowisko {{position}} w naszej organizacji {{organizationName}}.</p>
+            </div>
+        {{/if}}
+        {{#if answeredNow}}
+            {{#if ansPos}}
+                <div class="col-md-12 bg-info padding-15" style="text-align: center ">
+                    <p>Dziękujemy za potwierdzenie chęci przynależenia do naszej organizacji {{organizationName}}!</p>
+                    {{#if isGuest}}
+                        <p>W następnej wiadomości otrzymasz dane do logowania.</p>
+                    {{else}}
+                        <p>Otrzymałeś właśnie status Członka Honorowego</p>
+                    {{/if}}
+                    {{#with actualKwestia}}
+                        <p>Możesz śledzić na bieżąco kwestię <a href="{{pathFor 'informacjeKwestia'}}">tutaj</a> .</p>
+                    {{/with}}
+                </div>
+            {{else}}
+                <div class="col-md-12 bg-info padding-15" style="text-align: center ">
+                    <p>Dziękujemy za udzielenie odpowiedzi.</p>
+                    <p>System {{organizationName}}</p>
+                </div>
+            {{/if}}
+         {{/if}}
+    {{/if}}
+    {{> GlobalNotifications}}
+</template>

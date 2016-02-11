@@ -1,0 +1,79 @@
+<template name="previewKwestiaOpcja">
+    <div class="main">
+        <legend>Kwestia</legend>
+        <div class="row">
+            <div class="col col-md-10">
+                <form class="form-horizontal">
+                    <div class="form-group" id="kwestiaNazwaGroup">
+                        <label class=" col-xs-offset-1 col-xs-2">Nazwa Kwestii:</label>
+                        <div class="col-xs-9">
+                            {{kwestiaNazwa}}
+                        </div>
+                    </div>
+                    <legend>Treść Kwestii</legend>
+                    <div class="form-group" id="krotkaTrescGroup">
+                        <label class="col-xs-offset-1 col-xs-2">Krótka treść:</label>
+                        <div class="col-xs-9">
+                            {{krotkaTresc}}
+                        </div>
+                    </div>
+                    {{#if isKwestiaOsobowa}}
+                        <div class="form-group" id="daneAplikanta">
+                            <label class="col-xs-offset-1 col-xs-2" for="daneAplikantaGroup">Dane aplikanta:</label>
+
+                            <div class="col-xs-9">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td><strong>Imię i Nazwisko: </strong></td><td>{{szczegolowaTresc.fullName}}</td>
+                                    </tr>
+                                    {{#if protectorZR}}
+                                        <tr>
+                                            <td><strong>Email: </strong></td><td>{{szczegolowaTresc.email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Pesel: </strong></td><td>{{szczegolowaTresc.pesel}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Adres: </strong></td><td>{{szczegolowaTresc.address}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Kod pocztowy: </strong></td><td>{{szczegolowaTresc.zip}}</td>
+                                        </tr>
+                                    {{/if}}
+                                    <tr>
+                                        <td><strong>Miasto: </strong></td><td>{{szczegolowaTresc.city}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group" id="szczegolowaTrescGroup">
+                            <label class="control-label col-xs-3" for="inputEmail">Opis z uzasadnieniem:</label>
+
+                            <div class="col-xs-9">
+                               {{szczegolowaTresc.uwagi}}
+                            </div>
+                        </div>
+                    {{else}}
+                        <div class="form-group" id="szczegolowaTrescGroup">
+                            <label class="col-xs-offset-1 col-xs-2">Opis z uzasadnieniem:</label>
+                            <div class="col-xs-9">
+                                {{szczegolowaTresc}}
+                            </div>
+                        </div>
+                    {{/if}}
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <a href="{{pathFor "addKwestiaOpcja"}}" id="edit" type="button" class="btn btn-primary">Popraw</a>
+                            <a id="save" type="button" class="btn btn-primary">Dodaj</a>
+                            <a id="cancel" type="reset" class="btn btn-default">Anuluj</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <p class="col-md-12 bg-warning padding-15">
+            UWAGA! Złożonego wniosku nie można wycofać. Wnioskuj odpowiedzialnie i sprawdź przed wprowadzeniem do
+            systemu.
+        </p>
+    </div>
+</template>

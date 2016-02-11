@@ -1,0 +1,35 @@
+<template name="editLanguage">
+    <div class="main">
+        <legend>Edytuj język</legend>
+        <div class="row">
+            <div class="col col-md-10">
+                <form class="form-horizontal" id="languageEditForm">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="languageName">Nazwa języka:</label>
+
+                        <div class="col-xs-9">
+                            <input name="languageName" type="text" class="form-control" id="languageName"
+                                   placeholder="Nazwa (np. polski, angielski itp.)" value="{{languageName}}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="languageShortName">Skrót:</label>
+
+                        <div class="col-xs-9">
+                            <input name="languageShortName" type="text" class="form-control" id="languageShortName"
+                                   placeholder="Skrót (np. pl, en itp.)" value="{{shortName}}" required>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <input type="submit" class="btn btn-primary" value="Zapisz">
+                            <input type="reset" class="btn btn-default" value="Anuluj">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

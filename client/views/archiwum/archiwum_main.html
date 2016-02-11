@@ -1,0 +1,28 @@
+<template name="archiwum">
+    <!--{{#if currentUser}}-->
+        <div class="main">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#archiwum" aria-controls="archiwum" role="tab" data-toggle="tab">Archiwum</a></li>
+                    <li role="presentation"><a href="#hibernowane" aria-controls="hibernowane" role="tab" data-toggle="tab">Hibernowane</a></li>
+                    <li role="presentation"><a href="#kosz" aria-controls="kosz" role="tab" data-toggle="tab">Kosz</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="archiwum">
+                        {{> archiwumList}}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="hibernowane">
+                        <br />
+                        {{> hibernowaneList}}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="kosz">
+                        <br />
+                        {{> kosz}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--{{/if}}-->
+</template>
+

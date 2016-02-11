@@ -1,0 +1,80 @@
+<template name="administracjaUserMain">
+    {{#if currentUser}}
+        <div class="main">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#twojeKwestie" aria-controls="twojeKwestie" role="tab" data-toggle="tab">Twoje kwestie</a></li>
+                    <li role="presentation"><a href="#parametry" aria-controls="parametry" role="tab" data-toggle="tab">Parametry globalne</a></li>
+                    <li role="presentation"><a href="#uzytkownicy" aria-controls="uzytkownicy" role="tab" data-toggle="tab">Użytkownicy</a></li>
+                    {{#if isCzlonek}}
+                    <li role="presentation"><a href="#zglosHonorowy" aria-controls="zglosHonorowy" role="tab" data-toggle="tab">Zgłoś członka honorowego</a></li>
+                    {{/if}}
+                    {{#if isDoradca}}
+                        <li role="presentation"><a href="#aplikujNaZwyczajnego" aria-controls="aplikujNaZwyczajnego" role="tab" data-toggle="tab">Aplikuj na członka zwyczajnego</a></li>
+                    {{/if}}
+            </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="twojeKwestie">
+                        <br />
+                        {{#if listOfIssuesCount}}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{> reactiveTable
+                                    class = "table table-bordered table-hover"
+                                    fields = settings.fields
+                                    settings = settings
+                                    collection = listOfIssues
+                                    }}
+                                </div>
+                            </div>
+                        {{else}}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Nie utworzyłeś jeszcze żadnej Kwestii.</label>
+                                </div>
+                            </div>
+                        {{/if}}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="parametry">
+                        <br />
+                        {{> listParametr}}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="zglosHonorowy">
+                        <br />
+                        {{> addHonorowy}}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="uzytkownicy">
+                        <br />
+                        {{> profileList}}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="aplikujNaZwyczajnego">
+                        <br />
+                        {{#if kwestiaDraftExists}}
+                            {{#with myKwestia}}
+                                <div class="col-md-12 bg-warning padding-15" style="text-align: center ">
+                                    <p>Przepraszamy!</p>
+                                    <p>Istnieje już Kwestia Aplikacyjna! Aby ją zobaczyć kliknij
+                                        <a href="{{pathFor 'informacjeKwestia'}}">tutaj</a>
+                                    </p>
+                                </div>
+                            {{/with}}
+                        {{else}}
+                            {{#with myData}}
+                                {{> czlonekZwyczajnyForm}}
+                            {{/with}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+    {{>GlobalNotifications}}
+</template>
+
+<template name="lobbujZaKwestia">
+    {{#if IAmOwnerKwestiaGlosowanaOrDEliberowana}}
+        <a href="#" id="lobbujZaKwestia">Lobbuj za kwestią</a>
+    {{/if}}
+</template>
+

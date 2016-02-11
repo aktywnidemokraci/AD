@@ -1,0 +1,79 @@
+<template name="kwestiaDetails">
+    <legend>Treść Kwestii</legend>
+    <div class="clearfix"></div>
+    <table class="table table-bordered manageTable">
+        {{#if isOsobowa typ}}
+            <tr>
+                <td class="text-wraping"><strong> Tytuł</strong></td>
+                <td class="text-wraping">{{krotkaTresc}}</td>
+            </tr>
+            <tr>
+                <td><strong> Dane aplikanta</strong></td>
+                <td>
+                {{#if isHonorowyType typ}}
+                    <tr>
+                        <td><strong>Email: </strong></td>
+                        <td>{{szczegolowaTresc.email}}</td>
+                    </tr>
+                {{/if}}
+                {{#unless isHonorowyType typ}}
+                <tr>
+                    <td><strong>Imię i Nazwisko: </strong></td>
+                    <td>{{szczegolowaTresc.fullName}}</td>
+                </tr>
+                {{#if protectorZR}}
+                    <tr>
+                        <td><strong>Email: </strong></td>
+                        <td>{{szczegolowaTresc.email}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pesel: </strong></td>
+                        <td>{{szczegolowaTresc.pesel}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Adres: </strong></td>
+                        <td>{{szczegolowaTresc.address}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kod pocztowy: </strong></td>
+                        <td>{{szczegolowaTresc.zip}}</td>
+                    </tr>
+                {{/if}}
+                    <tr>
+                        <td><strong>Miasto: </strong></td>
+                        <td>{{szczegolowaTresc.city}}</td>
+                    </tr>
+                {{/unless}}
+                </td>
+            </tr>
+            <tr>
+                <td><strong> Dodatkowe</strong></td>
+                <td>{{szczegolowaTresc.uwagi}}</td>
+            </tr>
+        {{else}}
+            {{#if isGlobalParamsChange typ}}
+                <tr>
+                    <td><strong>Parametr: </strong></td>
+                    <td>{{szczegolowaTresc.title}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Wartość początkowa: </strong></td>
+                    <td>{{szczegolowaTresc.oldValue}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Proponowana wartość: </strong></td>
+                    <td>{{szczegolowaTresc.newValue}}</td>
+                </tr>
+            {{else}}
+                <tr>
+                    <td><strong> Krótka treść</strong></td>
+                    <td class="text-wraping">{{krotkaTresc}}</td>
+                </tr>
+                <tr>
+                    <td><strong> Opis z uzasadnieniem</strong></td>
+                    <td class="text-wraping">{{szczegolowaTresc}}</td>
+                </tr>
+            {{/if}}
+        {{/if}}
+    </table>
+</template>

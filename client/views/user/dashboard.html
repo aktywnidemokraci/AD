@@ -1,0 +1,26 @@
+<template name="dashBoard">
+    <br />
+    {{#if currentUser}}
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dashboard - Panel użytkownika</div>
+                <div class="panel-body">
+                    Tutaj będą się znajdowały informacje na temat Panelu użytkownika.
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Statystyki panelu</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Informacje o ilości danych w systemie.</p>
+                </div>
+                <div class="list-group">
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</template>

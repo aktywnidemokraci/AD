@@ -1,0 +1,74 @@
+<template name="addKwestiaForm">
+    <div class="main">
+        <div class="row">
+            <div class="col col-md-10">
+                <form class="form-horizontal" id="kwestiaForm">
+                    <legend>{{_ "addKwestiaForm.legend"}}</legend>
+                    <div class="form-group" id="kwestiaNazwaGroup">
+                        <label class="control-label col-xs-3" for="inputEmail">Nazwa Kwestii:</label>
+                        <div class="col-xs-9">
+                            <input class="form-control" name="kwestiaNazwa" maxlength="85" id="kwestiaNazwa"
+                                   placeholder="Nazwa Kwestii" value="{{kwestiaNazwa}}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="sugerowanyTemat">Temat:</label>
+                        <div class="col-xs-9">
+                            <input type="button" class="btn btn-primary" id="chooseTopicBtn" value="Wybierz istniejący">
+                            <input type="button" class="btn btn-default" id="addTopicBtn" value="Wprowadź nowy">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <input class="form-control" name="sugerowanyTemat" id="sugerowanyTemat"
+                                   placeholder="Wybierz lub wprowadź Temat" value="{{topic}}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="sugerowanyRodzaj">Rodzaj:</label>
+                        <div class="col-xs-9">
+                            <input type="button" class="btn btn-primary" id="chooseTypeBtn" value="Wybierz istniejący">
+                            <input type="button" class="btn btn-default" id="addTypeBtn" value="Wprowadź nowy">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <input class="form-control" name="sugerowanyRodzaj" id="sugerowanyRodzaj"
+                                   placeholder="Wybierz lub wprowadź Rodzaj" value="{{type}}" required>
+                        </div>
+                    </div>
+                    <legend>Treść Kwestii</legend>
+                    <div class="form-group" id="krotkaTrescGroup">
+                        <label class="control-label col-xs-3" for="tresc">Krótka treść:</label>
+
+                        <div class="col-xs-9">
+                            <textarea class="form-control" rows="3" name="krotkaTresc" maxlength="410" id="krotkaTresc"
+                                      placeholder="Krótka treść" required>{{krotkaTresc}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" id="szczegolowaTrescGroup">
+                        <label class="control-label col-xs-3" for="inputEmail">Opis z uzasadnieniem:</label>
+
+                        <div class="col-xs-9">
+                            <textarea class="form-control" rows="6" name="szczegolowaTresc" maxlength="1010" id="szczegolowaTresc"
+                                      placeholder="Opis z uzasadnieniem" required>{{szczegolowaTresc}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <input type="submit" class="btn btn-primary" value="Dodaj" id="submitAddKwestia">
+                            <input type="reset" class="btn btn-default" value="Anuluj">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{>chooseTopicModal}}
+    {{>chooseTypeModal}}
+    {{>addTypeModal}}
+    {{>addTopicModal}}
+    {{>GlobalNotifications}}
+</template>

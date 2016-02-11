@@ -1,0 +1,47 @@
+<template name="sendMessage">
+    <div class="main">
+        <legend>Nowa wiadomość</legend>
+        <div class="row">
+            <div class="col col-md-10">
+                <form class="form-horizontal" id="newEmailForm">
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="inputMyName">Od: </label>
+
+                        <div class="col-xs-9">
+                            <input name="inputMyName" type="text" class="form-control" id="inputMyName" value="{{myData}}" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="inputName">Do: </label>
+
+                        <div class="col-xs-9">
+                            <input name="inputName" type="text" class="form-control" id="inputName" value="{{receiverData}}" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="topic">Temat: </label>
+
+                        <div class="col-xs-9">
+                            <input name="topic" type="text" class="form-control" id="topic" placeholder="Temat">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" for="content">Treść: </label>
+
+                        <div class="col-xs-9">
+                            <textarea name="content" type="text" class="form-control" rows="5" id="content"></textarea>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <div class="col-xs-offset-3 col-xs-9">
+                            <input type="submit" class="btn btn-primary" value="Wyślij">
+                            <input type="reset" class="btn btn-default" value="Anuluj">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,10 @@
+{
+  "addKwestiaOpcjaForm":{
+    "addKwestiaH3":"Add Issue",
+    "nazwaKwestiiLabel":"Issue name:",
+    "tematLabel":"Topic:"
+  },
+  "addKwestiaForm":{
+    "legend":"Add Issue"
+  }
+}

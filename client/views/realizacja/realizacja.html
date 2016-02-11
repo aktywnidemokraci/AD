@@ -1,0 +1,51 @@
+<template name="realizacjaTab1">
+        <div class="main">
+            <h3>Lista Kwestii realizowanych</h3>
+            <br>
+            <hr/>
+            &nbsp;
+            <div class="row">
+                <div class="col-md-12">
+
+                    {{> reactiveTable
+                    class = "table table-bordered table-hover"
+                    fields = settings.fields
+                    settings = settings
+                    collection = "RealizacjaList"
+                    }}
+
+                </div>
+            </div>
+        </div>
+    {{>GlobalNotifications}}
+</template>
+
+<template name="editColumnRealization">
+    <a id="printResolution" data-toggle="tooltip" data-placement="top" title="Drukuj Uchwałę do pliku PDF">
+        <i class="glyphicon glyphicon-print clickable"></i>
+    </a>
+</template>
+
+<template name="listKwestiaRealzacjaColumnLabel">
+    <span data-toggle="tooltip" title="{{title}}">{{text}}</span>
+</template>
+
+<template name="dataRealizKwestia">
+    {{date}}
+</template>
+
+<template name="numerUchwKwestia">
+    {{number}}
+</template>
+
+<template name="raport">
+    {{#if hasZR}}
+        {{#if reportCurrentDurationExists raporty}}
+            {{#with currentReport raporty}}
+                <a href="{{pathFor 'informacjeRaport'}}">Pokaż</a>
+            {{/with}}
+        {{else}}
+            <a href="#" id="showReport">Pokaż</a>
+        {{/if}}
+    {{/if}}
+</template>

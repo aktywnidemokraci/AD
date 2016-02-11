@@ -1,0 +1,117 @@
+<template name="header">
+    {{>language}}
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+        </div>
+        <div id="navbar-collapse" class="navbar-collapse collapse">
+                    {{#if isAdmin}}
+                        <ul class="nav navbar-nav">
+                            <li class="{{activeRouteClass 'listLanguages'}}">
+                                <a href="{{pathFor 'listLanguages'}}">
+                                    <i class="fa fa-language"></i> Języki
+                                </a>
+                            </li>
+                        </ul>
+                    {{/if}}
+                    {{#unless isAdmin}}
+                    <ul class="nav navbar-nav">
+                        <li class="{{activeRouteClass 'listKwestia'}}">
+                            <a href="{{pathFor 'listKwestia'}}">
+                                <i class="fa fa-file-o"></i> Kwestie
+                            </a>
+                        </li>
+                        {{#if currentUser}}
+                            <li class="{{activeRouteClass 'glosowanie'}}">
+                                <a href="{{pathFor 'glosowanie'}}">
+                                    <i class="fa fa-file-text-o"></i> Głosowanie
+                                </a>
+                            </li>
+                        {{/if}}
+                        <li class="{{activeRouteClass 'realizacja'}}">
+                            <a href="{{pathFor 'realizacja'}}">
+                                <i class="fa fa-file-text"></i> Realizacja
+                            </a>
+                        </li>
+                        <li class="{{activeRouteClass 'archiwum'}}">
+                            <a href="{{pathFor 'archiwum'}}">
+                                <span class="fa fa-file-archive-o"></span> Archiwum
+                            </a>
+                        </li>
+                        {{#if currentUser}}
+                            <li class="{{activeRouteClass 'administracjaUserMain'}}">
+                                <a href="{{pathFor 'administracjaUserMain'}}">
+                                    <i class="fa fa-gears"></i> Ustawienia
+                                </a>
+                            </li>
+                        {{/if}}
+                    </ul>
+                    {{/unless}}
+                    {{#unless currentUser}}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="{{activeRouteClass 'login_form'}}">
+                                <a href="{{pathFor 'login_form'}}">
+                                    <i class="fa fa-sign-in"></i> Zaloguj się
+                                </a>
+                            </li>
+                            {{#if lessThanFiveUsers}}
+                                <li class="{{activeRouteClass 'register_form'}}">
+                                    <a href="{{pathFor 'register_form'}}">
+                                        <i class="fa fa-user-plus"></i> Zarejestruj się
+                                    </a>
+                                </li>
+                            {{else}}
+                                <li>
+                                    <a class="cursor-pointer" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <i class="fa fa-male"></i> Dołącz
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="{{pathFor 'czlonek_zwyczajny_form'}}">jako Członek zwyczajny</a></li>
+                                        <li><a href="{{pathFor 'doradca_form'}}">jako Doradca</a></li>
+                                        <li><a href="#" id="newRootClick">Nowy węzeł sieci</a></li>
+                                    </ul>
+                                </li>
+                            {{/if}}
+                        </ul>
+                    {{/unless}}
+            <ul class="nav navbar-nav navbar-right">
+                {{#if currentUser}}
+                    <li class="{{activeRouteClass 'notification_list'}} ">
+                        <a href="{{pathFor 'notification_list'}}">Powiadomienia
+                            {{#if anyNotRead}}
+                                <span class="badge notification-counter" style="background-color:red" id="notification-counter">{{issuesNotReadCount}}</span>
+                            {{/if}}
+                        </a>
+                    </li>
+                    {{> loginButtons}}
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</template>
+
+<template name="language">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-left">
+                <span class="navbar-brand clickable" id="organizationName"><strong>Aktywna Demokracja</strong> - <small>{{nazwaOrg}}</small></span>
+            </div>
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-xs" id="showPageInfo">
+                        <i class="fa fa-info-circle fa-lg cursor-pointer"></i> Page info
+                    </button>
+                    <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-language fa-lg cursor-pointer"></i> {{getUserLang}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        {{#each langs}}
+                            <li><a class="lang">{{shortName}}</a></li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

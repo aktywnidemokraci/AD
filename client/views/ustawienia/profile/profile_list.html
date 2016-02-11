@@ -1,0 +1,30 @@
+<template name="profileList">
+    <!--{{#if currentUser}}-->
+        <div class="main">
+            <legend>Lista użytkowników </legend>
+            <div class="row">
+                <div class="col-md-12">
+                    {{> reactiveTable
+                    class = "table table-bordered table-hover"
+                    fields = settings.fields
+                    settings = settings
+                    collection = "UsersList"
+                    }}
+                </div>
+            </div>
+        </div>
+        {{> updateRolesModal}}
+        {{> deleteAccountModal}}
+        {{> infoAccountModal}}
+        {{> updateAccountModal}}
+    <!--{{/if}}-->
+</template>
+
+<template name="userEmailContact">
+    {{#if myProfile this._id}}
+        {{email}}
+    {{else}}
+        <a href="{{ pathFor 'sendMessage' this._id}}" id="sendMessage">Napisz</a>
+    {{/if}}
+</template>
+

@@ -1,0 +1,62 @@
+<template name="managePriorities">
+    {{#if isRealizowana status}}
+        <td><strong> Priorytet w realizacji</strong></td>
+    {{else}}
+        <td><strong> Priorytet</strong></td>
+    {{/if}}
+    <td>
+        <div class="row">
+            <div class="col-md-1">
+                {{#if isRealizowana status}}
+                    <b>{{priority priorytetRealizacja}}</b>
+                {{else}}
+                    <b>{{priority priorytet}}</b>
+                {{/if}}
+            </div>
+            {{#unless koszZrealizowanaArchiwum czyAktywny status}}
+                <div class="col-md-11">
+                    <form>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-danger" value="-5" {{isSelected -5 idParent glosujacy status idKwestia}}>-5
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-danger" value="-4" {{isSelected -4 idParent glosujacy status idKwestia}}>-4
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-danger" value="-3" {{isSelected -3 idParent glosujacy status idKwestia}}>-3
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-danger" value="-2" {{isSelected -2 idParent glosujacy status idKwestia}}>-2
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-danger" value="-1" {{isSelected -1 idParent glosujacy status idKwestia}}>-1
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-default" value="0"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="Oznacza wstrzymanie się od głosu" {{isUserOrDoradcaLogged}}>
+                                &nbsp;0
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-success" value="1" {{isSelected 1 idParent glosujacy status idKwestia}}>+1
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-success" value="2" {{isSelected 2 idParent glosujacy status idKwestia}}>+2
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-success" value="3" {{isSelected 3 idParent glosujacy status idKwestia}}>+3
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-success" value="4" {{isSelected 4 idParent glosujacy status idKwestia}}>+4
+                            </button>
+                            <button id="priorytetButton" name="{{idKwestia}}" type="button"
+                                    class="btn btn-xs btn-success" value="5" {{isSelected 5 idParent glosujacy status idKwestia}}>+5
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            {{/unless}}
+        </div>
+    </td>
+</template>

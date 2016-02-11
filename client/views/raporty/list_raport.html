@@ -1,0 +1,31 @@
+<template name="listRaport">
+    {{#if currentUser}}
+        <div class="main">
+            <legend>{{kwestiaNazwa}}</legend>
+            <h4>Lista raportów</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    {{> reactiveTable
+                    class = "table table-bordered table-hover"
+                    fields = settings.fields
+                    settings = settings
+                    collection = RaportListAdmin
+                    }}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</template>
+
+<template name="dataUtworzenia">
+    {{dataUtworzenia}}
+</template>
+
+<template name="raportDetails">
+    {{#with raport _id}}
+        <a href="{{pathFor 'informacjeRaport'}}">{{this.tytul}}</a>
+    {{/with}}
+</template>
+
+
+

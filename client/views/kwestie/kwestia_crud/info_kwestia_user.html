@@ -1,0 +1,205 @@
+<template name="informacjeKwestia">
+    {{#if isIssueRealizowana}}
+        {{#if myselfInZR}}
+        <div class="main">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active" id="issueInfoDetails"><a href="#issueInfoo" aria-controls="issueInfoo" role="tab" data-toggle="tab">Szczegóły Kwestii</a></li>
+                    <li role="presentation"><a href="#manageZRIssue" aria-controls="manageZRIssue" role="tab" data-toggle="tab">Zespół Realizacyjny</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="issueInfoo">
+                        <br />
+                        {{> issueDetails}}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="manageZRIssue">
+                        <br />
+                        {{> issueManageZR idZespolRealizacyjny=idZespolRealizacyjny}}
+                    </div>
+                </div>
+            </div>
+         </div>
+
+        {{else}}
+            {{>issueDetails}}
+        {{/if}}
+            {{>zrModalCurrentIssueMyResolutions idZespolRealizacyjny=idZespolRealizacyjny }}
+    {{else}}
+        {{>issueDetails}}
+    {{/if}}
+</template>
+
+<template name="issueDetails">
+    <div class="main">
+        <div class="row">
+            <div class="col-md-12">
+                <legend>{{kwestiaNazwa}}<small> ({{status}})</small></legend>
+                {{#if anyEmailProblem}}
+                    <div class="col-md-12 bg-danger padding-15" style="text-align: center ">
+                        <p>Uwaga!</p>
+                        <p>{{emailProblemNotification}}</p>
+                    </div>
+                {{/if}}
+                &nbsp;
+                {{#unless isRealizowana}}
+                    <p class="bg-info padding-15">
+                        <b>Obecni:</b> {{glosujacyCount}}<br/>
+                        {{#if kworumComplete}}
+                            <b>Kworum:</b> spełnione.<br/>
+                        {{else}}
+                            <b>Kworum:</b> brak {{textKworum}} dla uzyskania kworum.<br/>
+                        {{/if}}
+                        {{#unless isGlobalParamChange}}
+                            {{#if ZRComplete}}
+                                <b>Zespół Realizacyjny:</b> skompletowany.<br/>
+                            {{else}}
+                                <b>Zespół Realizacyjny:</b> brak jeszcze {{ZRText}} ZR.<br/>
+                            {{/if}}
+                        {{/unless}}
+                        <br/>
+                        {{#if kwestiaInKosz}}
+                            <b>Powód odrzucenia kwestii:</b> {{reason}} <br/>
+                        {{/if}}
+                        {{#if isNotAdminOrDoradca}}
+                            {{#if mojPriorytetZero}}
+                                <br/>Wstrzymałeś się od głosu nadając tej Kwestii priorytet <b>0</b>
+                            {{else}}
+                                {{#if mojPiorytet}}
+                                    <br/>Nadałeś tej Kwestii priorytet: <b>{{mojPiorytet}}</b>
+                                {{else}}
+                                    <br/>Nie nadałeś jeszcze tej Kwestii priorytetu
+                                {{/if}}
+                            {{/if}}
+                        {{/if}}
+                    </p>
+                {{/unless}}
+            </div>
+            <!--{{thisKwestia}}-->
+            {{> kwestiaTopButtons
+            status=status
+            typ=typ
+            idParent=idParent
+            idKwestia=_id
+            czyAktywny=czyAktywny
+            idZespolRealizacyjny=idZespolRealizacyjny
+            }}
+        </div>
+
+        <br/>
+        <table class="table table-bordered manageTable">
+            {{#if isRealizowana}}
+                <td><strong> Priorytet w deliberacji i głosowaniu</strong></td>
+                <td><b>{{wartoscPriorytetuG}}</b></td>
+            {{/if}}
+            <tr>
+                {{>managePriorities
+                priorytet=wartoscPriorytetu
+                priorytetRealizacja=wartoscPriorytetuWRealizacji
+                idKwestia=_id
+                idParent=idParent
+                glosujacy=glosujacy
+                status=status
+                czyAktywny=czyAktywny
+                }}
+            </tr>
+            <tr>
+                <td class="text-wraping"><strong> Temat </strong>&nbsp; &nbsp; {{tematNazwa.nazwaTemat}}</td>
+                <td class="text-wraping"><strong> Rodzaj </strong>&nbsp; &nbsp; {{rodzajNazwa.nazwaRodzaj}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><strong> Data wprowadzenia Kwestii </strong>&nbsp; {{date}}</td>
+                <td><strong> Start głosowania </strong>&nbsp; {{dateVoteStart}}</td>
+                <td><strong> Finał </strong>&nbsp; {{dateVoteFinish}}</td>
+            </tr>
+        </table>
+        {{>kwestiaDetails
+        krotkaTresc=krotkaTresc
+        szczegolowaTresc=szczegolowaTresc
+        status=status
+        typ=typ
+        }}
+        {{#if currentUser}}
+            {{#unless isIssueArchiwalna}}
+            {{#unless isGlobalParamChange}}
+                {{>ZRTemplate
+                idZR=idZespolRealizacyjny
+                status=status
+                idKwestia=_id
+                czyAktywny=czyAktywny
+                zespol=zespol
+                typ=typ
+                }}
+            {{/unless}}
+            {{/unless}}
+        {{/if}}
+        {{#if ifHasOpcje}}
+            <div class="row">
+                {{> opcjeList
+                actualKwestiaId=_id
+                idParent=idParent
+                }}
+            </div>
+        {{/if}}
+        {{#if currentUser}}
+            <legend id="dyskusja">Dyskusja Kwestii</legend>
+            <div class="row">
+                <div class="col-md-12">
+                    {{> discussionMain
+                    _id =_id
+                    status=status
+                    czyAktywny=czyAktywny}}
+                </div>
+            </div>
+        {{/if}}
+    </div>
+
+    {{> notifications}}
+
+
+
+
+    {{> GlobalNotifications}}
+    {{#unless helperObserver}}
+        {{> addNazwaModal}}
+        {{> listZespolRealizacyjnyModal}}
+        {{>decyzjaModal}}
+        {{>listZespolRealizacyjnyDoubleModal}}
+    {{/unless}}
+
+</template>
+
+<template name="issueManageZR">
+    <input type="hidden" id="idZR" value="{{idZespolRealizacyjny}}"/>
+    <legend>{{getZRName idZespolRealizacyjny zespol}}</legend>
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            {{> reactiveTable
+                class = "table table-bordered table-hover"
+                fields = settings.fields
+                settings = settings
+                collection = ZRList
+            }}
+        </div>
+    </div>
+
+</template>
+
+<template name="zrOptions">
+    {{idZespolRealizacyjny}}
+    <div >
+        {{#if currentUser _id}}
+            <a class="btn btn-default btn-xs" data-toggle="tooltip" title="Rezygnuj z udziału w Zespole Realizacyjnym" id="giveUpMembership">
+                Rezygnuj <i class="fa fa-outdent"></i>
+            </a>
+        {{else}}
+            <a class="btn btn-default btn-xs" data-toggle="tooltip" title="Napisz wiadomość do członka ZR"
+               href="{{pathFor 'sendMessage' _id}}">
+                Napisz wiadomość <i class="fa fa-pencil"></i>
+            </a>
+        {{/if}}
+    </div>
+</template>
+

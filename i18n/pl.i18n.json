@@ -1,0 +1,56 @@
+{
+  "addKwestiaOpcjaForm":{
+    "addKwestiaH3":"Dodaj Kwestię",
+    "nazwaKwestiiLabel":"Nazwa Kwestii:",
+    "tematLabel":"Temat:"
+  },
+  "addKwestiaForm":{
+    "legend":"Dodaj Kwestię"
+  },
+  "pageInfo":{
+    "pl":{
+      "home":"Strona główna",
+      "admin":"Strona administratora",
+      "login_form":"Formularz logowania",
+      "profile_edit":"Edycja profilu",
+      "manage_account":"Zarządzanie kontem",
+      "setPagesInfo":"Informacje o stronach",
+      "setPagesInfo":"Informacje o stronach",
+      "listRodzaj":"Lista rodzajów",
+      "addRodzaj":"Dodaj rodzaj",
+      "editRodzaj":"Edytuj rodzaj",
+      "listRaport":"Lista raportów",
+      "addRaport":"Dodaj raport",
+      "listUsers":"Lista użytkowników",
+      "addUser":"Dodaj użytkownika",
+      "editUser":"Edytuj użytkownika",
+      "listParametr":"Lista parametrów",
+      "editParametry":"Edytuj parametry",
+      "previewParametr":"Podgląd parametrów",
+      "listTemat":"Lista tematów",
+      "addTemat":"Dodaj temat",
+      "editTemat":"Edytuj temat",
+      "listKwestiaAdmin":"Lista Kwestii administracja",
+      "listaKwestiiOczekujacych":"Lista Kwestii oczekujących",
+      "kwestiaOczekujaca":"Kwestia oczekująca",
+      "listLanguages":"Lista języków",
+      "addLanguage":"Dodaj język",
+      "editLanguage":"Edytuj język",
+      "listKwestia":"Lista Kwestii",
+      "addKwestia":"Dodaj Kwestię",
+      "addKwestiaOpcja":"Dodaj opcję Kwestii",
+      "editKwestia":"Edytuj Kwestię",
+      "previewKwestiaOpcja":"Podgląd opcji Kwestii",
+      "previewKwestia":"Podgląd Kwestii",
+      "informacjeKwestia":"Kwestia",
+      "dyskusjaKwestia":"Dyskusja Kwestii",
+      "archiwum":"Archiwum",
+      "informacjeKwestiaArchiwum":"Kwestia archiwum",
+      "realizacja":"Realizacja",
+      "glosowanie":"Głosowanie",
+      "profile_list":"Lista profili",
+      "profileInfo":"Informacje o profilu",
+      "administracjaUserMain":"Widok administracji"
+    }
+  }
+}
